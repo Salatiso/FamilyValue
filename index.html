@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FamilyValue - Recognizing Every Role</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+        
+        :root {
+            --primary: #8C52FF;
+            --primary-light: #B28DFF;
+            --secondary: #FF914D;
+            --accent1: #FF5C8D;
+            --accent2: #45C4B0;
+            --dark: #2D3748;
+            --light: #F7FAFC;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F7FAFC;
+            color: var(--dark);
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Ubuntu', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent1) 100%);
+        }
+        
+        .bg-primary {
+            background-color: var(--primary);
+        }
+        
+        .bg-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .bg-accent1 {
+            background-color: var(--accent1);
+        }
+        
+        .bg-accent2 {
+            background-color: var(--accent2);
+        }
+        
+        .text-primary {
+            color: var(--primary);
+        }
+        
+        .text-secondary {
+            color: var(--secondary);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #FFB07D;
+            transform: translateY(-2px);
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .currency-icon {
+            width: 32px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        
+        .family-member {
+            transition: all 0.3s ease;
+        }
+        
+        .family-member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .family-tree-connector {
+            position: absolute;
+            background-color: var(--primary-light);
+            z-index: -1;
+        }
+        
+        .horizontal-connector {
+            height: 4px;
+        }
+        
+        .vertical-connector {
+            width: 4px;
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .currency-selector::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        
+        .currency-selector::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .currency-selector::-webkit-scrollbar-thumb {
+            background: var(--primary-light);
+            border-radius: 10px;
+        }
+        
+        .currency-selector::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+        
+        .role-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-xl mr-2">FV</div>
+                        <span class="font-bold text-xl">FamilyValue</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#features" class="hover:text-primary transition-colors">Features</a>
+                    <a href="#how-it-works" class="hover:text-primary transition-colors">How It Works</a>
+                    <a href="#currency" class="hover:text-primary transition-colors">Currency Support</a>
+                    <a href="#demo" class="hover:text-primary transition-colors">Demo</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="px-4 py-2 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white transition-colors">Log In</a>
+                    <a href="#" class="px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-light transition-colors">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Recognize the Value in Every Family Role</h1>
+                    <p class="text-lg mb-8">FamilyValue helps you track, visualize, and celebrate each family member's contribution - especially in extended families and homeschooling environments.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#demo" class="btn-secondary px-8 py-3 rounded-lg text-center font-medium">See Demo</a>
+                        <a href="#" class="bg-white text-primary px-8 py-3 rounded-lg text-center font-medium hover:bg-gray-100 transition-colors">Learn More</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <!-- Family illustration -->
+                    <div class="bg-white rounded-xl p-6 shadow-lg relative z-10 max-w-md mx-auto">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-dark font-bold">Tshego Family</h3>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">8 Members</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-4 gap-4 mb-6">
+                            <div class="family-member flex flex-col items-center">
+                                <div class="w-14 h-14 rounded-full bg-primary-light flex items-center justify-center text-white text-xl font-bold mb-2">M</div>
+                                <span class="text-xs font-medium">Mother</span>
+                            </div>
+                            <div class="family-member flex flex-col items-center">
+                                <div class="w-14 h-14 rounded-full bg-secondary flex items-center justify-center text-white text-xl font-bold mb-2">F</div>
+                                <span class="text-xs font-medium">Father</span>
+                            </div>
+                            <div class="family-member flex flex-col items-center">
+                                <div class="w-14 h-14 rounded-full bg-accent1 flex items-center justify-center text-white text-xl font-bold mb-2">G</div>
+                                <span class="text-xs font-medium">Gogo</span>
+                            </div>
+                            <div class="family-member flex flex-col items-center">
+                                <div class="w-14 h-14 rounded-full bg-accent2 flex items-center justify-center text-white text-xl font-bold mb-2">A</div>
+                                <span class="text-xs font-medium">Aunt</span>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-4 gap-4">
+                            <div class="family-member flex flex-col items-center">
+                                <div class="w-14 h-14 rounded-full bg-yellow-400 flex items-center justify-center text-white text-xl font-bold mb-2">S1</div>
+                                <span class="text-xs font-medium">Sister</span>
+                            </div>
+                            <div class="family-member flex flex-col items-center">
+                                <div class="w-14 h-14 rounded-full bg-pink-400 flex items-center justify-center text-white text-xl font-bold mb-2">S2</div>
+                                <span class="text-xs font-medium">Sister</span>
+                            </div>
+                            <div class="family-member flex flex-col items-center">
+                                <div class="w-14 h-14 rounded-full bg-purple-400 flex items-center justify-center text-white text-xl font-bold mb-2">B</div>
+                                <span class="text-xs font-medium">Brother</span>
+                            </div>
+                            <div class="family-member flex flex-col items-center">
+                                <div class="w-14 h-14 rounded-full bg-blue-400 flex items-center justify-center text-white text-xl font-bold mb-2">C</div>
+                                <span class="text-xs font-medium">Cousin</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 pt-4 border-t">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="text-sm font-medium text-gray-500">Total Value Created</span>
+                                    <div class="text-2xl font-bold text-primary">R24,350 <span class="text-sm font-normal text-gray-500">/ week</span></div>
+                                </div>
+                                <a href="#" class="text-primary hover:underline text-sm font-medium">View Details →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Decorative elements -->
+                    <div class="absolute top-20 right-10 w-20 h-20 bg-accent2 rounded-full opacity-20 animate-float"></div>
+                    <div class="absolute bottom-10 left-10 w-16 h-16 bg-secondary rounded-full opacity-20 animate-float" style="animation-delay: 2s"></div>
+                    <div class="absolute top-40 left-0 w-12 h-12 bg-accent1 rounded-full opacity-20 animate-float" style="animation-delay: 4s"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Designed for Every Family Structure</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Especially for extended families and homeschooling environments where traditional role valuation falls short.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white shadow-md p-6">
+                    <div class="w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Unlimited Family Members</h3>
+                    <p class="text-gray-600">Add as many family members as needed to represent your extended family, with clear relationship mapping between each person.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white shadow-md p-6">
+                    <div class="w-16 h-16 rounded-full bg-secondary bg-opacity-10 flex items-center justify-center mb-6">
+                        <i class="fas fa-tasks text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Contribution Tracking</h3>
+                    <p class="text-gray-600">Record and categorize each family member's contributions, from cooking to childcare to financial support.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white shadow-md p-6">
+                    <div class="w-16 h-16 rounded-full bg-accent1 bg-opacity-10 flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-pie text-accent1 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Value Visualization</h3>
+                    <p class="text-gray-600">See the economic and social value of each contribution with intuitive charts and reports.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card bg-white shadow-md p-6">
+                    <div class="w-16 h-16 rounded-full bg-accent2 bg-opacity-10 flex items-center justify-center mb-6">
+                        <i class="fas fa-book-open text-accent2 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Homeschooling Integration</h3>
+                    <p class="text-gray-600">Track educational activities as part of the family system, with progress monitoring and resource sharing.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card bg-white shadow-md p-6">
+                    <div class="w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mb-6">
+                        <i class="fas fa-exchange-alt text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Multi-household Support</h3>
+                    <p class="text-gray-600">Manage contributions across multiple households for children with shared custody arrangements.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card bg-white shadow-md p-6">
+                    <div class="w-16 h-16 rounded-full bg-secondary bg-opacity-10 flex items-center justify-center mb-6">
+                        <i class="fas fa-coins text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Multi-currency Support</h3>
+                    <p class="text-gray-600">Set your preferred currency (including South African Rand) for accurate economic valuation of contributions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">How FamilyValue Works</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">A simple process to recognize and value every family member's contribution.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-white rounded-xl shadow-md p-8 text-center">
+                    <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">1</div>
+                    <h3 class="text-xl font-bold mb-3">Map Your Family</h3>
+                    <p class="text-gray-600">Add family members and define relationships - including extended family and multiple households.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="bg-white rounded-xl shadow-md p-8 text-center">
+                    <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">2</div>
+                    <h3 class="text-xl font-bold mb-3">Track Contributions</h3>
+                    <p class="text-gray-600">Record daily tasks, responsibilities, and contributions from each family member.</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="bg-white rounded-xl shadow-md p-8 text-center">
+                    <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">3</div>
+                    <h3 class="text-xl font-bold mb-3">Visualize Value</h3>
+                    <p class="text-gray-600">See reports and dashboards showing the economic and social value created by each person.</p>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="#" class="btn-primary px-8 py-3 rounded-lg inline-block font-medium">Get Started Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Currency Support Section -->
+    <section id="currency" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Global Value Recognition</h2>
+                    <p class="text-lg mb-6">FamilyValue supports multiple currencies, allowing families worldwide to accurately value contributions in their local economy.</p>
+                    <p class="mb-6">Whether you're using South African Rand (ZAR), US Dollars, Euros, or other currencies, the system will calculate appropriate valuations based on your local market rates.</p>
+                    
+                    <div class="bg-gray-50 rounded-xl p-6">
+                        <h4 class="font-bold text-lg mb-4">Featured Currencies</h4>
+                        <div class="flex flex-wrap">
+                            <div class="currency-selector flex items-center mb-3 mr-4">
+                                <div class="currency-icon bg-green-100 text-green-800">R</div>
+                                <span>South African Rand (ZAR)</span>
+                            </div>
+                            <div class="currency-selector flex items-center mb-3 mr-4">
+                                <div class="currency-icon bg-blue-100 text-blue-800">$</div>
+                                <span>US Dollar (USD)</span>
+                            </div>
+                            <div class="currency-selector flex items-center mb-3 mr-4">
+                                <div class="currency-icon bg-yellow-100 text-yellow-800">€</div>
+                                <span>Euro (EUR)</span>
+                            </div>
+                            <div class="currency-selector flex items-center mb-3 mr-4">
+                                <div class="currency-icon bg-purple-100 text-purple-800">£</div>
+                                <span>British Pound (GBP)</span>
+                            </div>
+                            <div class="currency-selector flex items-center mb-3 mr-4">
+                                <div class="currency-icon bg-red-100 text-red-800">¥</div>
+                                <span>Japanese Yen (JPY)</span>
+                            </div>
+                            <div class="currency-selector flex items-center mb-3">
+                                <div class="currency-icon bg-indigo-100 text-indigo-800">+</div>
+                                <span>50+ more currencies</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-white rounded-xl shadow-lg p-6 max-w-md mx-auto">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="font-bold text-xl">Currency Selection</h3>
+                            <span class="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm">Currently: ZAR</span>
+                        </div>
+                        
+                        <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-gray-600">Primary Currency</span>
+                                <div class="flex items-center font-medium">
+                                    <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center text-green-800 mr-2">R</div>
+                                    South African Rand
+                                </div>
+                            </div>
+                            
+                            <div class="relative">
+                                <input type="text" class="w-full border rounded-lg py-3 px-4 pl-10" placeholder="Search currencies...">
+                                <i class="fas fa-search absolute left-3 top-3.5 text-gray-400"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-medium mb-3">Common Currencies</h4>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button class="flex items-center p-3 border rounded-lg hover:bg-gray-50 transition-colors">
+                                    <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center text-green-800 mr-2">R</div>
+                                    <span>ZAR</span>
+                                </button>
+                                <button class="flex items-center p-3 border rounded-lg hover:bg-gray-50 transition-colors">
+                                    <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-blue-800 mr-2">$</div>
+                                    <span>USD</span>
+                                </button>
+                                <button class="flex items-center p-3 border rounded-lg hover:bg-gray-50 transition-colors">
+                                    <div class="w-6 h-6 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-800 mr-2">€</div>
+                                    <span>EUR</span>
+                                </button>
+                                <button class="flex items-center p-3 border rounded-lg hover:bg-gray-50 transition-colors">
+                                    <div class="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center text-purple-800 mr-2">£</div>
+                                    <span>GBP</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button class="btn-primary w-full py-3 rounded-lg">Save Currency Preference</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">See FamilyValue in Action</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Explore how the platform recognizes and visualizes family contributions.</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-8 max-w-6xl mx-auto">
+                <div class="flex flex-col lg:flex-row">
+                    <!-- Sidebar -->
+                    <div class="lg:w-1/4 mb-8 lg:mb-0 lg:pr-6">
+                        <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                            <h3 class="font-bold text-lg mb-3">The Makeba Family</h3>
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold mr-3">SM</div>
+                                <div>
+                                    <div class="font-medium">Sipho Makeba</div>
+                                    <div class="text-sm text-gray-500">Administrator</div>
+                                </div>
+                            </div>
+                            <div class="text-sm text-gray-600">
+                                <div class="flex justify-between mb-1">
+                                    <span>Family Members:</span>
+                                    <span class="font-medium">9</span>
+                                </div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Active Contributions:</span>
+                                    <span class="font-medium">32</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Currency:</span>
+                                    <span class="font-medium">ZAR (R)</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-medium mb-3">Family Members</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center p-2 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                    <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-bold mr-2">S</div>
+                                    <div>
+                                        <div class="font-
